@@ -38,11 +38,7 @@
 
   <v-container>  
 
-    <v-card 
-      class="mx-auto blue-grey darken-4 pa-1" 
-      outlined
-      dense
-    >
+    <v-card class="mx-auto blue-grey darken-4 pa-1" outlined dense>
 
       <div class="text-left">
         <span class="font-weight-bold pa-1 blue-grey--text">preview</span>
@@ -51,26 +47,26 @@
       <v-card-text 
         class="font-weight-bold pa-0 white--text" 
         style="white-space: pre-wrap;"
-      >{{ create_data }}
+      >{{ formatToData }}
       </v-card-text>
 
     </v-card>
 
-    <v-container class="text-center">
+    <v-container class="text-center" v-if="create_flag">
       <a 
         href="https://twitter.com/share?ref_src=twsrc%5Etfw"
         class="twitter-share-button"
         data-show-count="false"
         data-size="large"
         data-hashtags="Demo"
-        :data-text="create_data"
+        :data-text="formatToData"
       >Tweet</a>
       <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     </v-container>
 
+    <v-btn @click="update_format_data">Create Tweet Button</v-btn>
   </v-container>
 
-  {{ input_race_place }}
   </div>
 
 </template>
@@ -102,7 +98,6 @@ export default {
       dataset_race_bet_kind: ['単勝','複勝'],
       dataset_race_bet_way: ['１点買い'],
 
-
       // 入力データ
       input_race_place: '',
       input_race_num: '',
@@ -110,29 +105,43 @@ export default {
       input_race_bet_kind: '',
 
       // 作成データ
-      create_data: this.input_race_place,
-
-      // create_data: "\n"+
-      //   this.input_race_place+" "+
-      //   this.input_race_num+"R\n"+
-      //   this.input_race_bet_kind+"（"+
-      //   this.input_race_bet_way+"）",
+      create_flag: false,
       
     }
   },
   methods: {
     selected_race_place: function (selected_data) {
       this.input_race_place = selected_data
+      this.create_flag = false
     },
     selected_race_num: function (selected_data) {
       this.input_race_num = selected_data
+      this.create_flag = false
     },
     selected_race_bet_way: function (selected_data) {
       this.input_race_bet_way = selected_data
+      this.create_flag = false
     },
     selected_race_bet_kind: function (selected_data) {
       this.input_race_bet_kind = selected_data
+      this.create_flag = false
     },
+    update_format_data: function (event) {
+      if (this.input_race_place && this.input_race_num && 
+        this.input_race_bet_way && this.input_race_bet_kind)
+        return this.create_flag = true
+      else 
+        return this.create_flag = false
+    }
+  },
+  computed: {
+    formatToData: function() {
+      return "\n"+
+        this.input_race_place+" "+
+        this.input_race_num+"R\n"+
+        this.input_race_bet_kind+"（"+
+        this.input_race_bet_way+"）"
+    }
   }
 }
 </script>
