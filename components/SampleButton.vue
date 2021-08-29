@@ -1,6 +1,4 @@
 <template>
-
-<div>
     
     <v-container>  
 
@@ -23,8 +21,6 @@
       </v-row>
       
     </v-container>
-
-</div>
 
 </template>
 
