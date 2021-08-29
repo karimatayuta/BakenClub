@@ -1,6 +1,6 @@
 <template>
 
-    <v-container>
+    <v-container class="pa-2">
 
       <v-row align="center">
         
@@ -13,8 +13,9 @@
         <v-col class="d-flex  pa-0" cols="8" sm="6">
           <v-select
             :items="props_data" 
-            :label="label_text" 
-            @change="changeSelected()"
+            :label="label_text"
+            v-model="selected_data"
+            @change="changeSelected(selected_data)"
           ></v-select>
         </v-col>
       
@@ -34,13 +35,16 @@ export default {
       props_title: this.subtitle,
       props_data: this.dataset,
       label_text: "選択してください",
+      selected_data: "",
     }
   },
   methods: {
     changeSelected: function(event) {
-        this.label_text = ""
-    },    
-  }
+      this.label_text = ""
+      this.$emit('select_data', event)
+      // alert(event)
+    },   
+  },
 }
 </script>
 
