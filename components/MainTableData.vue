@@ -65,15 +65,6 @@
         
         </v-data-table>
 
-
-        </v-container>
-
-        <v-container>
-            <div class="text-center">
-                <!-- <v-btn outlined rounded>Create Text</v-btn> -->
-                <!-- <v-btn outlined rounded>Create Text</v-btn> -->
-                <v-btn outlined rounded>Create URL</v-btn>
-            </div>
         </v-container>
 
     </div>

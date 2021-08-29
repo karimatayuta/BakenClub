@@ -27,7 +27,11 @@
       :dataset="dataset_race_bet_way"
     ></MainSelectButton>
 
+    <!-- テーブルデータ -->
     <MainTableData></MainTableData>
+
+    <!-- URL作成ボタン -->
+    <SampleButton></SampleButton>
 
   </div>
 
@@ -36,11 +40,13 @@
 <script>
 import MainSelectButton from '~/components/MainSelectButton.vue'
 import MainTableData from '~/components/MainTableData.vue'
+import SampleButton from '~/components/SampleButton.vue'
 
 export default {
   components: {
     MainSelectButton,
     MainTableData,
+    SampleButton,
   },
   data() {
     return {
