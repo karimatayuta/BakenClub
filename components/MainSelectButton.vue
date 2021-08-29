@@ -11,11 +11,11 @@
 
         <!-- サブタイトル[Button] -->
         <v-col class="d-flex  pa-0" cols="8" sm="6">
-            <v-select
-              :items="props_data" 
-              :label="label_text" 
-              @change="changeSelected()"
-            ></v-select>
+          <v-select
+            :items="props_data" 
+            :label="label_text" 
+            @change="changeSelected()"
+          ></v-select>
         </v-col>
       
       </v-row>
